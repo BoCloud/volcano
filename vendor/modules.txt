@@ -38,6 +38,9 @@ github.com/davecgh/go-spew/spew
 ## explicit
 github.com/docker/distribution/digestset
 github.com/docker/distribution/reference
+# github.com/eapache/queue v1.1.0
+## explicit
+github.com/eapache/queue
 # github.com/emicklei/go-restful v2.9.5+incompatible
 ## explicit
 github.com/emicklei/go-restful
@@ -45,7 +48,7 @@ github.com/emicklei/go-restful/log
 # github.com/evanphx/json-patch v4.12.0+incompatible
 ## explicit
 github.com/evanphx/json-patch
-# github.com/fsnotify/fsnotify v1.4.9
+# github.com/fsnotify/fsnotify v1.5.1
 ## explicit; go 1.13
 github.com/fsnotify/fsnotify
 # github.com/go-logr/logr v1.2.0
@@ -111,8 +114,8 @@ github.com/hashicorp/errwrap
 # github.com/hashicorp/go-multierror v1.0.0
 ## explicit
 github.com/hashicorp/go-multierror
-# github.com/imdario/mergo v0.3.5
-## explicit
+# github.com/imdario/mergo v0.3.12
+## explicit; go 1.13
 github.com/imdario/mergo
 # github.com/inconshreveable/mousetrap v1.0.0
 ## explicit
@@ -131,6 +134,9 @@ github.com/mailru/easyjson/jwriter
 # github.com/matttproud/golang_protobuf_extensions v1.0.2-0.20181231171920-c182affec369
 ## explicit; go 1.9
 github.com/matttproud/golang_protobuf_extensions/pbutil
+# github.com/mitchellh/mapstructure v1.4.1
+## explicit; go 1.14
+github.com/mitchellh/mapstructure
 # github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
 ## explicit
 github.com/modern-go/concurrent
@@ -234,7 +240,7 @@ go.uber.org/automaxprocs/maxprocs
 # go.uber.org/multierr v1.6.0
 ## explicit; go 1.12
 go.uber.org/multierr
-# go.uber.org/zap v1.19.0
+# go.uber.org/zap v1.19.1
 ## explicit; go 1.13
 go.uber.org/zap
 go.uber.org/zap/buffer
@@ -624,6 +630,7 @@ k8s.io/client-go/applyconfigurations/storage/v1alpha1
 k8s.io/client-go/applyconfigurations/storage/v1beta1
 k8s.io/client-go/discovery
 k8s.io/client-go/discovery/fake
+k8s.io/client-go/dynamic
 k8s.io/client-go/informers
 k8s.io/client-go/informers/admissionregistration
 k8s.io/client-go/informers/admissionregistration/v1
@@ -819,6 +826,7 @@ k8s.io/client-go/listers/scheduling/v1beta1
 k8s.io/client-go/listers/storage/v1
 k8s.io/client-go/listers/storage/v1alpha1
 k8s.io/client-go/listers/storage/v1beta1
+k8s.io/client-go/metadata
 k8s.io/client-go/pkg/apis/clientauthentication
 k8s.io/client-go/pkg/apis/clientauthentication/install
 k8s.io/client-go/pkg/apis/clientauthentication/v1
@@ -831,6 +839,7 @@ k8s.io/client-go/plugin/pkg/client/auth/oidc
 k8s.io/client-go/rest
 k8s.io/client-go/rest/fake
 k8s.io/client-go/rest/watch
+k8s.io/client-go/restmapper
 k8s.io/client-go/testing
 k8s.io/client-go/third_party/forked/golang/template
 k8s.io/client-go/tools/auth
@@ -1026,26 +1035,34 @@ k8s.io/utils/path
 k8s.io/utils/pointer
 k8s.io/utils/strings
 k8s.io/utils/trace
+# sigs.k8s.io/controller-runtime v0.11.1
+## explicit; go 1.17
+sigs.k8s.io/controller-runtime/pkg/client
+sigs.k8s.io/controller-runtime/pkg/client/apiutil
+sigs.k8s.io/controller-runtime/pkg/controller/controllerutil
+sigs.k8s.io/controller-runtime/pkg/internal/objectutil
+sigs.k8s.io/controller-runtime/pkg/log
 # sigs.k8s.io/json v0.0.0-20211020170558-c049b76a60c6
 ## explicit; go 1.16
 sigs.k8s.io/json
 sigs.k8s.io/json/internal/golang/encoding/json
-# sigs.k8s.io/structured-merge-diff/v4 v4.1.2
+# sigs.k8s.io/structured-merge-diff/v4 v4.2.0
 ## explicit; go 1.13
 sigs.k8s.io/structured-merge-diff/v4/fieldpath
 sigs.k8s.io/structured-merge-diff/v4/schema
 sigs.k8s.io/structured-merge-diff/v4/typed
 sigs.k8s.io/structured-merge-diff/v4/value
-# sigs.k8s.io/yaml v1.2.0
+# sigs.k8s.io/yaml v1.3.0
 ## explicit; go 1.12
 sigs.k8s.io/yaml
 # stathat.com/c/consistent v1.0.0
 ## explicit
 stathat.com/c/consistent
-# volcano.sh/apis v1.5.0-beta.0.0.20220427084719-22d3dd007a8f
+# volcano.sh/apis v1.5.1-0.20220519034637-e40e5d99c7c5 => ../../volcano.sh/apis
 ## explicit; go 1.17
 volcano.sh/apis/pkg/apis/batch/v1alpha1
 volcano.sh/apis/pkg/apis/bus/v1alpha1
+volcano.sh/apis/pkg/apis/flow/v1alpha1
 volcano.sh/apis/pkg/apis/helpers
 volcano.sh/apis/pkg/apis/nodeinfo/v1alpha1
 volcano.sh/apis/pkg/apis/scheduling
@@ -1059,6 +1076,8 @@ volcano.sh/apis/pkg/client/clientset/versioned/typed/batch/v1alpha1
 volcano.sh/apis/pkg/client/clientset/versioned/typed/batch/v1alpha1/fake
 volcano.sh/apis/pkg/client/clientset/versioned/typed/bus/v1alpha1
 volcano.sh/apis/pkg/client/clientset/versioned/typed/bus/v1alpha1/fake
+volcano.sh/apis/pkg/client/clientset/versioned/typed/flow/v1alpha1
+volcano.sh/apis/pkg/client/clientset/versioned/typed/flow/v1alpha1/fake
 volcano.sh/apis/pkg/client/clientset/versioned/typed/nodeinfo/v1alpha1
 volcano.sh/apis/pkg/client/clientset/versioned/typed/nodeinfo/v1alpha1/fake
 volcano.sh/apis/pkg/client/clientset/versioned/typed/scheduling/v1beta1
@@ -1068,6 +1087,8 @@ volcano.sh/apis/pkg/client/informers/externalversions/batch
 volcano.sh/apis/pkg/client/informers/externalversions/batch/v1alpha1
 volcano.sh/apis/pkg/client/informers/externalversions/bus
 volcano.sh/apis/pkg/client/informers/externalversions/bus/v1alpha1
+volcano.sh/apis/pkg/client/informers/externalversions/flow
+volcano.sh/apis/pkg/client/informers/externalversions/flow/v1alpha1
 volcano.sh/apis/pkg/client/informers/externalversions/internalinterfaces
 volcano.sh/apis/pkg/client/informers/externalversions/nodeinfo
 volcano.sh/apis/pkg/client/informers/externalversions/nodeinfo/v1alpha1
@@ -1075,6 +1096,7 @@ volcano.sh/apis/pkg/client/informers/externalversions/scheduling
 volcano.sh/apis/pkg/client/informers/externalversions/scheduling/v1beta1
 volcano.sh/apis/pkg/client/listers/batch/v1alpha1
 volcano.sh/apis/pkg/client/listers/bus/v1alpha1
+volcano.sh/apis/pkg/client/listers/flow/v1alpha1
 volcano.sh/apis/pkg/client/listers/nodeinfo/v1alpha1
 volcano.sh/apis/pkg/client/listers/scheduling/v1beta1
 # github.com/opencontainers/runc => github.com/opencontainers/runc v1.0.3
