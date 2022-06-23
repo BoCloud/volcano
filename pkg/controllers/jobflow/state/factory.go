@@ -9,7 +9,7 @@ type State interface {
 	Execute(action v1alpha1.Action) error
 }
 
-// UpdateQueueStatusFn updates the queue status.
+// UpdateJobFlowStatusFn updates the jobFlow status.
 type UpdateJobFlowStatusFn func(status *v1alpha1.JobFlowStatus, allJobList int)
 
 type JobFlowActionFn func(jobflow *v1alpha1.JobFlow, fn UpdateJobFlowStatusFn) error

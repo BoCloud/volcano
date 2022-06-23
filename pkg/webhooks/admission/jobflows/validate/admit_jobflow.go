@@ -17,7 +17,6 @@ func init() {
 	router.RegisterAdmission(service)
 }
 
-var sideEffectsNone = whv1.SideEffectClassNone
 var service = &router.AdmissionService{
 	Path: "/jobflows/validate",
 	Func: AdmitJobFlows,
@@ -91,7 +90,7 @@ func validateJobFlowCreate(jobFlow *jobflowv1alpha1.JobFlow) error {
 	if !duplicatedTemplate {
 		// Build dag through dependencies
 		for current, parents := range templateNames {
-			if parents != nil && len(parents) > 0 {
+			if len(parents) > 0 {
 				for _, parent := range parents {
 					if _, found := vertexMap[parent]; !found {
 						msg += fmt.Sprintf("cannot find the template: %s ", parent)

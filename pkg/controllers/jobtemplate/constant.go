@@ -1,6 +1,8 @@
 package jobtemplate
 
 const (
+	// CreateByJobTemplateValueNum
 	CreateByJobTemplateValueNum = 2
-	CreateByJobTemplate         = "volcano.sh/createByJobTemplate"
+	// CreateByJobTemplate
+	CreateByJobTemplate = "volcano.sh/createByJobTemplate"
 )

@@ -38,7 +38,7 @@ var policyActionMap = map[busv1alpha1.Action]bool{
 	busv1alpha1.CloseQueueAction:   false,
 }
 
-func ValidatePolicies(policies []batchv1alpha1.LifecyclePolicy, fldPath *field.Path) error {
+func validatePolicies(policies []batchv1alpha1.LifecyclePolicy, fldPath *field.Path) error {
 	var err error
 	policyEvents := map[busv1alpha1.Event]struct{}{}
 	exitCodes := map[int32]struct{}{}
@@ -145,7 +145,7 @@ func GetValidActions() []busv1alpha1.Action {
 }
 
 // validateIO validates IO configuration.
-func ValidateIO(volumes []batchv1alpha1.VolumeSpec) error {
+func validateIO(volumes []batchv1alpha1.VolumeSpec) error {
 	volumeMap := map[string]bool{}
 	for _, volume := range volumes {
 		if len(volume.MountPath) == 0 {

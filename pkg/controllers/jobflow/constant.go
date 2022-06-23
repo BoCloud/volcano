@@ -1,7 +1,10 @@
 package jobflow
 
 const (
-	Volcano             = "volcano"
-	JobFlow             = "JobFlow"
+	// Volcano
+	Volcano = "volcano"
+	// JobFlow kind of jobFlow
+	JobFlow = "JobFlow"
+	// CreateByJobTemplate
 	CreateByJobTemplate = "volcano.sh/createByJobTemplate"
 )

@@ -127,7 +127,7 @@ func DecodePodGroup(object runtime.RawExtension, resource metav1.GroupVersionRes
 	return &podgroup, nil
 }
 
-// DecodeJob decodes the jobFlow using deserializer from the raw object.
+// DecodeJobFlow decodes the jobFlow using deserializer from the raw object.
 func DecodeJobFlow(object runtime.RawExtension, resource metav1.GroupVersionResource) (*jobflowv1alpha1.JobFlow, error) {
 	jobFlowResource := metav1.GroupVersionResource{Group: helpers.JobFlowKind.Group, Version: helpers.JobFlowKind.Version, Resource: "jobflows"}
 	raw := object.Raw
@@ -147,7 +147,7 @@ func DecodeJobFlow(object runtime.RawExtension, resource metav1.GroupVersionReso
 	return &jobFlow, nil
 }
 
-// DecodeJob decodes the jobTemplate using deserializer from the raw object.
+// DecodeJobTemplate decodes the jobTemplate using deserializer from the raw object.
 func DecodeJobTemplate(object runtime.RawExtension, resource metav1.GroupVersionResource) (*jobflowv1alpha1.JobTemplate, error) {
 	jobTemplateResource := metav1.GroupVersionResource{Group: helpers.JobTemplateKind.Group, Version: helpers.JobTemplateKind.Version, Resource: "jobtemplates"}
 	raw := object.Raw

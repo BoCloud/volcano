@@ -61,11 +61,11 @@ func (j *jobflowcontroller) deployJob(jobFlow *v1alpha1flow.JobFlow) error {
 	// load jobTemplate by flow and deploy it
 	for _, flow := range jobFlow.Spec.Flows {
 		jobName := getJobName(jobFlow.Name, flow.Name)
-		job, err := j.jobLister.Jobs(jobFlow.Namespace).Get(jobName)
+		_, err := j.jobLister.Jobs(jobFlow.Namespace).Get(jobName)
 		if err != nil {
 			if errors.IsNotFound(err) {
 				// If it is not distributed, judge whether the dependency of the VcJob meets the requirements
-				job = new(v1alpha1.Job)
+				job := new(v1alpha1.Job)
 				if flow.DependsOn == nil || flow.DependsOn.Targets == nil {
 					if err := j.loadJobTemplateAndSetJob(jobFlow, flow.Name, jobName, job); err != nil {
 						return err
@@ -143,11 +143,7 @@ func (j *jobflowcontroller) getAllJobStatus(jobFlow *v1alpha1flow.JobFlow) (*v1a
 	CompletedJobs := make([]string, 0)
 	TerminatedJobs := make([]string, 0)
 	UnKnowJobs := make([]string, 0)
-	jobList := make([]string, 0)
 
-	for _, flow := range jobFlow.Spec.Flows {
-		jobList = append(jobList, getJobName(jobFlow.Name, flow.Name))
-	}
 	statusListJobMap := map[v1alpha1.JobPhase]*[]string{
 		v1alpha1.Pending:     &pendingJobs,
 		v1alpha1.Running:     &runningJobs,
@@ -270,10 +266,7 @@ func (j *jobflowcontroller) loadJobTemplateAndSetJob(jobFlow *v1alpha1flow.JobFl
 		Status: v1alpha1.JobStatus{},
 	}
 
-	if err := controllerutil.SetControllerReference(jobFlow, job, scheme.Scheme); err != nil {
-		return err
-	}
-	return nil
+	return controllerutil.SetControllerReference(jobFlow, job, scheme.Scheme)
 }
 
 func (j *jobflowcontroller) deleteAllJobsCreateByJobFlow(jobFlow *v1alpha1flow.JobFlow) error {

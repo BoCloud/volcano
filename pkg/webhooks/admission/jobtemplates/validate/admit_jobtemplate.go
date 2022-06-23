@@ -27,7 +27,6 @@ func init() {
 	router.RegisterAdmission(service)
 }
 
-var sideEffectsNone = whv1.SideEffectClassNone
 var service = &router.AdmissionService{
 	Path: "/jobtemplates/validate",
 	Func: AdmitJobTemplates,
@@ -53,7 +52,7 @@ var service = &router.AdmissionService{
 
 var config = &router.AdmissionServiceConfig{}
 
-// AdmitJobFlows is to admit jobFlows and return response.
+// AdmitJobTemplates is to admit jobTemplates and return response.
 func AdmitJobTemplates(ar admissionv1.AdmissionReview) *admissionv1.AdmissionResponse {
 	klog.V(3).Infof("admitting jobtemplates -- %s", ar.Request.Operation)
 
@@ -140,12 +139,12 @@ func validateJobTemplateCreate(job *jobflowv1alpha1.JobTemplate) error {
 		msg += "job 'minAvailable' should not be greater than total replicas in tasks;"
 	}
 
-	if err := ValidatePolicies(job.Spec.Policies, field.NewPath("spec.policies")); err != nil {
+	if err := validatePolicies(job.Spec.Policies, field.NewPath("spec.policies")); err != nil {
 		msg = msg + err.Error() + fmt.Sprintf(" valid events are %v, valid actions are %v;",
 			GetValidEvents(), GetValidActions())
 	}
 
-	if err := ValidateIO(job.Spec.Volumes); err != nil {
+	if err := validateIO(job.Spec.Volumes); err != nil {
 		msg += err.Error()
 	}
 
@@ -246,8 +245,7 @@ func validateTaskTopoPolicy(task v1alpha1.TaskSpec, index int) error {
 	for id, container := range append(template.Spec.Containers, template.Spec.InitContainers...) {
 		requestNum := guaranteedCPUs(container)
 		if requestNum == 0 {
-			return fmt.Errorf("the cpu request isn't  an integer in spec.task[%d] container[%d].",
-				index, id)
+			return fmt.Errorf("the cpu request isn't  an integer in spec.task[%d] container[%d].", index, id)
 		}
 	}
 
