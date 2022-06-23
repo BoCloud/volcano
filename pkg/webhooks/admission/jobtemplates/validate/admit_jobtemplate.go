@@ -245,7 +245,7 @@ func validateTaskTopoPolicy(task v1alpha1.TaskSpec, index int) error {
 	for id, container := range append(template.Spec.Containers, template.Spec.InitContainers...) {
 		requestNum := guaranteedCPUs(container)
 		if requestNum == 0 {
-			return fmt.Errorf("the cpu request isn't  an integer in spec.task[%d] container[%d].", index, id)
+			return fmt.Errorf("the cpu request isn't  an integer in spec.task[%d] container[%d]", index, id)
 		}
 	}
 

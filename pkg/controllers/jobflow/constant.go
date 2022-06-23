@@ -1,10 +1,10 @@
 package jobflow
 
 const (
-	// Volcano
+	// Volcano string of volcano apiVersion
 	Volcano = "volcano"
 	// JobFlow kind of jobFlow
 	JobFlow = "JobFlow"
-	// CreateByJobTemplate
+	// CreateByJobTemplate the vcjob annotation of create by jobTemplate
 	CreateByJobTemplate = "volcano.sh/createByJobTemplate"
 )
