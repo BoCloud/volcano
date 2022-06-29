@@ -16,10 +16,10 @@ import (
 	vcclientset "volcano.sh/apis/pkg/client/clientset/versioned"
 	versionedscheme "volcano.sh/apis/pkg/client/clientset/versioned/scheme"
 	informerfactory "volcano.sh/apis/pkg/client/informers/externalversions"
-	v1alpha12 "volcano.sh/apis/pkg/client/informers/externalversions/batch/v1alpha1"
-	"volcano.sh/apis/pkg/client/informers/externalversions/flow/v1alpha1"
+	batchinformer "volcano.sh/apis/pkg/client/informers/externalversions/batch/v1alpha1"
+	flowinformer "volcano.sh/apis/pkg/client/informers/externalversions/flow/v1alpha1"
 	batchlister "volcano.sh/apis/pkg/client/listers/batch/v1alpha1"
-	v1alpha13 "volcano.sh/apis/pkg/client/listers/flow/v1alpha1"
+	flowlister "volcano.sh/apis/pkg/client/listers/flow/v1alpha1"
 	"volcano.sh/volcano/pkg/controllers/apis"
 	"volcano.sh/volcano/pkg/controllers/framework"
 )
@@ -34,11 +34,11 @@ type jobtemplatecontroller struct {
 	vcClient   vcclientset.Interface
 
 	//informer
-	jobTemplateInformer v1alpha1.JobTemplateInformer
-	jobInformer         v1alpha12.JobInformer
+	jobTemplateInformer flowinformer.JobTemplateInformer
+	jobInformer         batchinformer.JobInformer
 
 	//jobTemplateLister
-	jobTemplateLister v1alpha13.JobTemplateLister
+	jobTemplateLister flowlister.JobTemplateLister
 	jobTemplateSynced cache.InformerSynced
 
 	//jobLister
