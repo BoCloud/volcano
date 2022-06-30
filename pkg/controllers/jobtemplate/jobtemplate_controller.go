@@ -153,7 +153,7 @@ func (j *jobtemplatecontroller) handleJobTemplate(req *apis.FlowRequest) error {
 	jobTemplate, err := j.jobTemplateLister.JobTemplates(req.Namespace).Get(req.JobTemplateName)
 	if err != nil {
 		if apierrors.IsNotFound(err) {
-			klog.V(4).Infof("JobFlow %s has been deleted.", req.JobTemplateName)
+			klog.V(4).Infof("JobTemplate %s has been deleted.", req.JobTemplateName)
 			return nil
 		}
 
