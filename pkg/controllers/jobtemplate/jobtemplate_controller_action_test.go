@@ -65,6 +65,7 @@ func TestSyncJobTemplateFunc(t *testing.T) {
 						ObjectMeta: metav1.ObjectMeta{
 							Name:        "job1",
 							Namespace:   namespace,
+							Labels:      map[string]string{CreateByJobTemplate: GetConnectionOfJobAndJobTemplate(namespace, "jobtemplate")},
 							Annotations: map[string]string{CreateByJobTemplate: GetConnectionOfJobAndJobTemplate(namespace, "jobtemplate")},
 						},
 						Spec:   v1alpha1.JobSpec{},

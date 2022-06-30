@@ -35,11 +35,11 @@ func (j *jobtemplatecontroller) addJob(obj interface{}) {
 		return
 	}
 
-	if job.GetAnnotations()[CreateByJobTemplate] == "" {
+	if job.Labels[CreateByJobTemplate] == "" {
 		return
 	}
 
-	namespaceName := strings.Split(job.GetAnnotations()[CreateByJobTemplate], ".")
+	namespaceName := strings.Split(job.Labels[CreateByJobTemplate], ".")
 	if len(namespaceName) != CreateByJobTemplateValueNum {
 		return
 	}

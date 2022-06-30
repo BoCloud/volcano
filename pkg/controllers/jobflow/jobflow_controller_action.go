@@ -260,6 +260,7 @@ func (j *jobflowcontroller) loadJobTemplateAndSetJob(jobFlow *v1alpha1flow.JobFl
 		ObjectMeta: metav1.ObjectMeta{
 			Name:        jobName,
 			Namespace:   jobFlow.Namespace,
+			Labels:      map[string]string{CreateByJobTemplate: GetConnectionOfJobAndJobTemplate(jobFlow.Namespace, flowName)},
 			Annotations: map[string]string{CreateByJobTemplate: GetConnectionOfJobAndJobTemplate(jobFlow.Namespace, flowName)},
 		},
 		Spec:   jobTemplate.Spec,

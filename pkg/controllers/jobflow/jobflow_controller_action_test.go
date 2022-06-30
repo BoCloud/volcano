@@ -405,6 +405,7 @@ func TestLoadJobTemplateAndSetJobFunc(t *testing.T) {
 	type wantRes struct {
 		OwnerReference []metav1.OwnerReference
 		Annotations    map[string]string
+		Labels         map[string]string
 		Err            error
 	}
 	flag := true
@@ -448,6 +449,9 @@ func TestLoadJobTemplateAndSetJobFunc(t *testing.T) {
 				Annotations: map[string]string{
 					CreateByJobTemplate: GetConnectionOfJobAndJobTemplate("default", "jobtemplate"),
 				},
+				Labels: map[string]string{
+					CreateByJobTemplate: GetConnectionOfJobAndJobTemplate("default", "jobtemplate"),
+				},
 				Err: nil,
 			},
 		},
@@ -467,6 +471,9 @@ func TestLoadJobTemplateAndSetJobFunc(t *testing.T) {
 				t.Error("not expected job OwnerReferences")
 			}
 			if !reflect.DeepEqual(tt.args.job.Annotations, tt.want.Annotations) {
+				t.Error("not expected job Annotations")
+			}
+			if !reflect.DeepEqual(tt.args.job.Labels, tt.want.Labels) {
 				t.Error("not expected job Annotations")
 			}
 		})

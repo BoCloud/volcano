@@ -7,9 +7,5 @@ type failedState struct {
 }
 
 func (p *failedState) Execute(action v1alpha1.Action) error {
-	switch action {
-	case v1alpha1.SyncJobFlowAction:
-		return nil
-	}
 	return nil
 }
